@@ -1,7 +1,10 @@
 package in.nareshtechnologies.scoretracker;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,18 +21,6 @@ public class MainActivity extends AppCompatActivity {
     int count = 0 ;
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i("MAIN","onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("MAIN","onStop");
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -39,6 +30,44 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("MAIN","onCreate");
 
+        if(savedInstanceState!=null && savedInstanceState.containsKey("DATA")){
+            count = savedInstanceState.getInt("DATA");
+            score.setText(String.valueOf(count));
+        }
+
+    }
+
+    // Persist data across orientation changes of an Activity (Configuration changes)
+    // SavedInstanceState
+
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("DATA",count);
+    }
+
+    public void incrementScore(View view) {
+        // When the + button is clicked, we shall invoke this method
+       count++;
+       score.setText(String.valueOf(count));
+    }
+
+    public void decrementScore(View view) {
+        // When the - button is clicked, we shall invoke this method
+       count--;
+        score.setText(String.valueOf(count));
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("MAIN","onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("MAIN","onStop");
     }
 
     @Override
@@ -65,15 +94,36 @@ public class MainActivity extends AppCompatActivity {
         Log.i("MAIN","onDestroy");
     }
 
-    public void incrementScore(View view) {
-        // When the + button is clicked, we shall invoke this method
-       count++;
-       score.setText(String.valueOf(count));
-    }
 
-    public void decrementScore(View view) {
-        // When the - button is clicked, we shall invoke this method
-       count--;
-        score.setText(String.valueOf(count));
+    // TO Override the default functionality of the back button (<)
+    @Override
+    public void onBackPressed() {
+        /* This line calls the super class onBackPressed(..) method
+        super.onBackPressed();*/
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // alert dialogs can have title
+        builder.setTitle("Do you really want to exit the app ?");
+        // alert dialogs can display message (Content)
+        builder.setMessage("click yes or no or cancel");
+        // Alert diaogs can also show an icon along with them
+        builder.setIcon(R.drawable.ic_baseline_baby_changing_station_24);
+
+        // Alert dialogs can have three buttons
+            // Positive
+            // Negative
+            // nertral
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+                // finish() method closes the current acitivity
+            }
+        });
+        builder.setNegativeButton("NO", null);
+        builder.setNeutralButton("CANCEL", null);
+
+        // show() method should be called to show alert dialog box
+        builder.show();
+
     }
 }
