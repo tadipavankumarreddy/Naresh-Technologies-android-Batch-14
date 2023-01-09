@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/first"
+        android:title="Reset"
+        android:icon="@drawable/ic_baseline_lock_reset_24"
+        app:showAsAction="always"
+        />
+
+    <item android:id="@+id/second"
+        android:title="Second"
+        android:icon="@drawable/ic_baseline_baby_changing_station_24"
+        app:showAsAction="always"
+        />
+
+    <item android:id="@+id/third"
+        android:title="Third"
+        app:showAsAction="always"
+        />
+
+    <item android:id="@+id/fourth"
+        android:title="Fourth"
+        />
+
+    <item android:id="@+id/fifth"
+        android:title="Fifth"
+        />
+
+    <item android:id="@+id/sixth"
+        android:title="Sixth"
+        />
+
+</menu>

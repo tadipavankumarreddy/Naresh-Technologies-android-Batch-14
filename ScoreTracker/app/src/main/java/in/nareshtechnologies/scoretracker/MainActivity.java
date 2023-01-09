@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Persist data across orientation changes of an Activity (Configuration changes)
     // SavedInstanceState
-
-
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -126,4 +126,32 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.first:
+                count = 0;
+                score.setText(String.valueOf(count));
+                break;
+
+            case R.id.second:
+                Toast.makeText(this, "Second option is selected", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+        return true;
+    }
+
+    // TODO for options menu
+    // Step 1: Create a xml file to create the options menu items
+    // Step 2: Override onCreateOptionsMenu(...) for attaching the menu items to the activity
+    // Step 3: get the menu options into action by overriding onOptionsItemSelected(...)
+
 }
