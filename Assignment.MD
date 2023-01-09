@@ -4,3 +4,7 @@
 
 ## Assignment - 2
 ***Create an app that can add an alarm clock, send an email and intiate a phone call when correct data is given. use [common Intents](https://developer.android.com/guide/components/intents-common) to address this.***
+
+
+## Assignment - 3
+***Create an app that has Context Menu and Popup menu. Follow this [documentation](https://developer.android.com/develop/ui/views/components/menus) for reference***
