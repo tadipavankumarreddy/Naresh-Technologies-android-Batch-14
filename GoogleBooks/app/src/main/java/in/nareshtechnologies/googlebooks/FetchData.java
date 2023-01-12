@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,19 +63,32 @@ public class FetchData extends AsyncTask<String,Void,String> {
         super.onPostExecute(s);
         // AS the data has arrived, We would like to display the data on the TextView
         // Also We would like to stop showing the progressbar to the user
-        progressBar.setVisibility(View.INVISIBLE);
-        textView.setText("");
-        try {
+       progressBar.setVisibility(View.INVISIBLE);
+       textView.setText("");
+        /*try {
             JSONObject root = new JSONObject(s);
             JSONArray items = root.getJSONArray("items");
-            for(int i=0; i<items.length(); i++){
-                JSONObject item = items.getJSONObject(i);
-                JSONObject volinfo = item.getJSONObject("volumeInfo");
-                String title = volinfo.getString("title");
-                textView.append(title+"\n\n");
+            for(int i =0; i<items.length(); i++){
+                JSONObject obj = items.getJSONObject(i);
+                JSONObject volInf = obj.getJSONObject("volumeInfo");
+                String title = volInf.getString("title");
+                JSONArray auths = volInf.getJSONArray("authors");
+                String a = "";
+                for(int j = 0; j<auths.length(); j++){
+                    a += "  "+auths.getString(j);
+                }
+                String lik = volInf.getString("previewLink");
+                textView.append(title+"\n"+a+"+\n"+lik+"\n+________________________\n\n");
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }*/
+        Gson gson = new Gson();
+        SourceData data = gson.fromJson(s,SourceData.class);
+        for(Item i : data.getItems()){
+            VolumeInfo vi = i.getVolumeInfo();
+            String t = vi.getTitle();
+            textView.append(t+"\n");
         }
     }
 }
