@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Daily Samachar</string>
+
+    <string-array name="news_categories">
+        <item>all</item>
+        <item>national</item>
+        <item>business</item>
+        <item>sports</item>
+        <item>world</item>
+        <item>politics</item>
+        <item>technology</item>
+        <item>entertainment</item>
+        <item>miscellaneous</item>
+        <item>science</item>
+    </string-array>
+</resources>
