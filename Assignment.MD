@@ -11,3 +11,9 @@
 
 ## Assignment - 4
 ***Create an app that retrieves data from one of the public free Rest services in this [link](https://github.com/public-apis/public-apis) and parse the json response using gson Library [Gson Link](https://github.com/google/gson) [Jsonschema to pojo](https://www.jsonschema2pojo.org/)***
+
+
+## Assignment 5
+***To follow along, please try to create a prototype like [this](https://www.canva.com/design/DAFX7ouDlPU/PXd2jSY_EsGhPNBCQ3KrRw/watch?utm_content=DAFX7ouDlPU&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink) using canva***
+
+
