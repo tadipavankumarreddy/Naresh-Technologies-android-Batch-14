@@ -16,4 +16,7 @@
 ## Assignment 5
 ***To follow along, please try to create a prototype like [this](https://www.canva.com/design/DAFX7ouDlPU/PXd2jSY_EsGhPNBCQ3KrRw/watch?utm_content=DAFX7ouDlPU&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink) using canva***
 
-
+## Assignment 6
+***use [fake rest api](https://jsonplaceholder.typicode.com) and create requests for the following calls***
+ - GET
+ - POST
