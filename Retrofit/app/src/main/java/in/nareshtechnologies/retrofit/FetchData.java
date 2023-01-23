@@ -5,7 +5,7 @@ import retrofit2.http.GET;
 
 public interface FetchData {
 
-    @GET("quotes")
-    Call<String> getData();
+    @GET("news?category=entertainment")
+    Call<Example> getData();
 
 }
