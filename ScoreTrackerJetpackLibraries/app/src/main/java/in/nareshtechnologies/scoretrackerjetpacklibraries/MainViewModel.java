@@ -2,23 +2,25 @@ package in.nareshtechnologies.scoretrackerjetpacklibraries;
 
 import android.util.Log;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MainViewModel extends ViewModel {
 
-    int count;
+    MutableLiveData<Integer> count;
     //The view model will be created here
     public MainViewModel() {
-        count = 0;
+        count = new MutableLiveData<>();
+        count.setValue(0);
         Log.i("MAIN3","ViewModel is Created");
     }
 
     public void increment(){
-        count++;
+        count.setValue(count.getValue() + 1);
     }
 
     public void decrement(){
-        count--;
+        count.setValue(count.getValue() - 1);
     }
     // ViewModel will be destroyed
     @Override
